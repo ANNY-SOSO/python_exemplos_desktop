@@ -11,6 +11,9 @@ janela = tk .Tk()
 janela.title("Exemplo de Interface")
 janela.geometry("400x150")
 
+# Mudando a cor de fundo da tela
+janela.config(bg="light gray")
+
 #  Criar uma caixa de entrada (Entry)
 caixa_texto = tk.Entry(janela, width=60)
 caixa_texto.pack(pady=10)
@@ -20,7 +23,7 @@ botao =tk.Button(janela, text="Mostrar Texto", command=mostrar_mensagem, bg="pin
 botao.pack(pady=5)
 
 # Criar um rótulo para mostrar o resultado
-label_resultado = tk.Label(janela, text='')
+label_resultado = tk.Label(janela, text=" ",bg="light gray", fg="black")
 label_resultado.pack(pady=10)
 
 # Executar a tela principal
