@@ -47,24 +47,28 @@ janela = tk .Tk()
 janela.title("Interface avançada")
 janela.geometry("400x500")
 
+vertical = tk.Frame()
+vertical.pack(expand=True)
+vertical.config(bg="light gray")
+
 # Mudando a cor de fundo da tela
 janela.config(bg="light gray")
 
 #  Criar uma caixa de entrada (Entry) 
-label_nome = tk.Label(janela, text="Digite seu nome: ", bg='pink', font=("georgia", 14), width=17)
+label_nome = tk.Label(vertical, text="Digite seu nome: ", bg='pink', font=("georgia", 14), width=17)
 label_nome.pack(pady=5)
-caixa_texto = tk.Entry(janela, width=40)
+caixa_texto = tk.Entry(vertical, width=40)
 caixa_texto.pack(pady=5)
 
 # criar botões de rádio
-label_preferencia = tk.Label(janela, text="Escolha sua preferência: ", bg="light gray")
+label_preferencia = tk.Label(vertical, text="Escolha sua preferência: ", bg="light gray")
 label_preferencia.pack(pady=5)
 
 var_radio = tk.StringVar(value=" ")
-radio_cafe = tk.Radiobutton(janela, text="Café", variable=var_radio, value="Café", bg="light gray")
-radio_cha = tk.Radiobutton(janela, text="Chá", variable=var_radio, value="Chá", bg="light gray")
-radio_suco = tk.Radiobutton(janela, text="Suco", variable=var_radio, value="Suco", bg="light gray")
-radio_agua = tk.Radiobutton(janela, text="Água", variable=var_radio, value="Água", bg="light gray")
+radio_cafe = tk.Radiobutton(vertical, text="Café", variable=var_radio, value="Café", bg="light gray")
+radio_cha = tk.Radiobutton(vertical, text="Chá", variable=var_radio, value="Chá", bg="light gray")
+radio_suco = tk.Radiobutton(vertical, text="Suco", variable=var_radio, value="Suco", bg="light gray")
+radio_agua = tk.Radiobutton(vertical, text="Água", variable=var_radio, value="Água", bg="light gray")
 
 # .pack (Método de Tkinter que deixa as opções visíveis)
 radio_cafe.pack()
@@ -74,31 +78,35 @@ radio_agua.pack()
 
 # Criar caixas de seleção múltipla (Checkbox)
 var_check_saudacao = tk.BooleanVar()
-check_saudacao = tk.Checkbutton(janela, text="Usar saudação informal", variable=var_check_saudacao, bg="light gray")
+check_saudacao = tk.Checkbutton(vertical, text="Usar saudação informal", variable=var_check_saudacao, bg="light gray")
 check_saudacao.pack(pady=5)
 
 var_check_personalizada = tk.BooleanVar()
-check_personalizada = tk.Checkbutton(janela, text="Usar saudação personalizada", variable=var_check_personalizada, bg="light gray")
+check_personalizada = tk.Checkbutton(vertical, text="Usar saudação personalizada", variable=var_check_personalizada, bg="light gray")
 check_personalizada.pack(pady=5)
 
 # ComboBox (Caixa de seleção com opções)
-label_cor = tk.Label(janela, text="Escolha sua cor favorita: " ,bg= "light gray")
+label_cor = tk.Label(vertical, text="Escolha sua cor favorita: " ,bg= "light gray")
 label_cor.pack(pady=5)
 
-combo_cor = ttk.Combobox(janela, values=["Vermelho" ,"Azul", "Verde", "Amarelo", "Preto" , "Branco"])
+combo_cor = ttk.Combobox(vertical, values=["Vermelho" ,"Azul", "Verde", "Amarelo", "Preto" , "Branco"])
 combo_cor.set("Escolha sua cor")
 combo_cor.pack(pady=5)
 
+horizontal = tk.Frame(vertical)
+horizontal.pack(expand=True)
+horizontal.config(bg="light gray")
+
 # Criar botões (Frase e Limpar)
-botao_atualizar = tk.Button(janela, text="Atualizar", command=atualizar_resultado, bg="pink")
-botao_atualizar.pack(pady=10)
+botao_atualizar = tk.Button(horizontal, text="Atualizar", command=atualizar_resultado, bg="pink", width=10)
+botao_atualizar.pack(pady=10 ,side="left", padx=10)
 
 # Limpar
-botao_limpar = tk.Button(janela, text="Limpar", command=limpar_campos, bg="pink")
-botao_limpar.pack(pady=10)
+botao_limpar = tk.Button(horizontal, text="Limpar", command=limpar_campos, bg="pink", width=10)
+botao_limpar.pack(pady=10 ,side="right", padx=10)
 
 # Exibição do resultado final (Rótulo "Label")
-label_resultado = tk.Label(janela, text="", wraplength=350, bg="light gray")
+label_resultado = tk.Label(vertical, text="", wraplength=350, bg="light gray")
 label_resultado.pack(pady=10)
 
 # Executar a janela principal
